@@ -12,7 +12,8 @@ function response_object($account) {
   return [
     "id" => $account->getId(),
     "username" => $account->getUsername(),
-    "name" => $account->getFullName()
+    "name" => $account->getFullName(),
+    "image" => $account->getProfilePicUrl()
   ];
 } 
 
