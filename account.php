@@ -4,9 +4,9 @@ header('Content-Type: application/json; charset=utf-8');
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/helper.php';
 
-$id = 4448572312;
+$id = intval($_GET['user_id']);
 $cache_file = __DIR__.'/cache/users/'.$id.'.json';
-$ignore_cache = false;
+$ignore_cache = isset($_GET['skip_cache']);
 
 if(file_exists($cache_file) && !$ignore_cache){
   $response = json_decode(file_get_contents($cache_file)); 
