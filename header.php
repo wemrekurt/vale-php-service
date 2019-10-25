@@ -12,3 +12,11 @@ require __DIR__ . '/helper.php';
 $credentials = json_decode(file_get_contents(__DIR__.'/credentials.json'));
 $debug = false;
 $truncatedDebug = false;
+
+$ig = new \InstagramAPI\Instagram($debug, $truncatedDebug);
+
+try {
+	$ig->login($credentials->username, $credentials->password);
+} catch (\Exception $e) {
+	die('Bir hata oluştu: ' . $e->getMessage());
+}
