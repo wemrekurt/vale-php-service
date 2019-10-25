@@ -1,8 +1,6 @@
 <?php
 
-header('Content-Type: application/json; charset=utf-8');
-require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/helper.php';
+require __DIR__ . '/header.php';
 
 $id = intval($_GET['user_id']);
 $cache_file = __DIR__.'/cache/users/'.$id.'.json';
@@ -11,7 +9,6 @@ $ignore_cache = isset($_GET['skip_cache']);
 if(file_exists($cache_file) && !$ignore_cache){
   $response = json_decode(file_get_contents($cache_file)); 
 }else {
-  $credentials = json_decode(file_get_contents(__DIR__.'/credentials.json'));
   $instagram = \InstagramScraper\Instagram::withCredentials($credentials->username, $credentials->password, __DIR__ .'/cache');
   $instagram->login();
   
