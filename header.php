@@ -7,6 +7,8 @@ header('Content-Type: application/json; charset=utf-8');
 require __DIR__ . '/vendor/autoload.php';
 require __DIR__ . '/helper.php';
 
+\InstagramAPI\Instagram::$allowDangerousWebUsageAtMyOwnRisk = true;
+
 $credentials = json_decode(file_get_contents(__DIR__.'/credentials.json'));
 $debug = false;
 $truncatedDebug = false;
